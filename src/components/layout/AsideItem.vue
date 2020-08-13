@@ -28,17 +28,6 @@
             <el-menu-item index="tJson">导为JSON</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-
-       <el-submenu index="model">
-        <template slot="title">
-          <i class="el-icon-coin"></i>
-          <span slot="title">模型管理</span>
-        </template>
-        <el-menu-item-group>
-            <el-menu-item index="mSubmit">模型提交</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-
       <el-menu-item index="user">
         <i class="el-icon-menu"></i>
         <span slot="title">用户管理</span>
@@ -55,22 +44,10 @@
         </template>
         <el-menu-item-group>
             <el-menu-item index="role">角色管理</el-menu-item>
-            <el-menu-item index="department">部门管理</el-menu-item>
-            <el-menu-item index="dictionaries">字典管理</el-menu-item>
             <el-menu-item index="menu">菜单管理</el-menu-item>
-            <el-menu-item index="signIn">登录日志</el-menu-item>
-            <el-menu-item index="business">业务日志</el-menu-item>
             <el-menu-item index="notice">通知管理</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
-      <el-menu-item index="joggle">
-        <i class="el-icon-document"></i>
-        <span slot="title">接口文档</span>
-      </el-menu-item>
-      <el-menu-item index="code">
-        <i class="el-icon-setting"></i>
-        <span slot="title">代码生成</span>
-      </el-menu-item>
     </el-menu>
     </el-scrollbar>
   </div>

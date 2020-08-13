@@ -7,7 +7,7 @@
           <div class="info">
             <div class="img">
               <img src="../../assets/img/tou.gif" alt="头像">
-              <p class="name">胡图图</p>
+              <p class="name">路飞</p>
               <p>超级管理员</p>
             </div>
             <h5><i class="el-icon-user"></i> 详细信息</h5>

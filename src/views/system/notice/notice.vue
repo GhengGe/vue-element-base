@@ -3,47 +3,20 @@
     <div class="u_cont" v-if="show == '1'">
       <!-- 表单 -->
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm" label-position="left">
-        <el-form-item label="角色名称" prop="name">
-          <el-input v-model="ruleForm.name" placeholder="请输入用户名称"></el-input>
+        <el-form-item label="文章标题" prop="name">
+          <el-input v-model="ruleForm.name" placeholder="请输入文章标题"></el-input>
         </el-form-item>
         <el-button class="btn-color" @click="submitForm('ruleForm')" icon="el-icon-search">搜索</el-button>
         <el-button class="btn-color" icon="el-icon-plus" @click="addBtn()">添加</el-button>
       </el-form>
-      <!-- 添加 -->
-      <transition name="fade" >
-      <el-form :model="addForm" :rules="addRules" ref="addForm" label-width="80px" class="addRuleForm" label-position="left" v-show="showAdd">
-        <el-form-item label="标题" prop="title" class="little">
-          <el-input v-model="addForm.title" placeholder="请输入部门名称"></el-input>
-        </el-form-item>
-        <el-form-item label="内容" prop="content" class="little">
-          <el-input v-model="addForm.content" placeholder="请输入部门全称"></el-input>
-        </el-form-item>
-        <el-button class="btn-color" @click="addFrom('addForm')">提交</el-button>
-        <el-button class="btn-color" >取消</el-button>
-      </el-form>
-      </transition>
-      <!-- 修改 -->
-      <transition name="fade" >
-      <el-form :model="updateForm" :rules="updateRules" ref="updateForm" label-width="80px" class="updateRuleForm" label-position="left" v-show="showUpdate">
-        <el-form-item label="标题" prop="title" class="little">
-          <el-input v-model="updateForm.title" placeholder="请输入部门名称"></el-input>
-        </el-form-item>
-        <el-form-item label="内容" prop="content" class="little">
-          <el-input v-model="updateForm.content" placeholder="请输入部门全称"></el-input>
-        </el-form-item>
-        <el-button class="btn-color" @click="updateFrom('updateForm')">提交</el-button>
-        <el-button class="btn-color" >取消</el-button>
-      </el-form>
-      </transition>
       <!-- 表格 -->
       <el-table :data="tableData" height="650" border style="width: 100%" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
           <el-table-column type="index" width="60"></el-table-column>
-          <el-table-column sortable :show-overflow-tooltip="true" prop="id" label="主键id" > </el-table-column>
-          <el-table-column sortable :show-overflow-tooltip="true" prop="title" label="标题"> </el-table-column>
-          <el-table-column sortable :show-overflow-tooltip="true" prop="type" label="类型" > </el-table-column>
-          <el-table-column sortable :show-overflow-tooltip="true" prop="content"  label="内容" > </el-table-column>
-          <el-table-column sortable :show-overflow-tooltip="true" prop="createtime"  label="创建时间" v-if="false"> </el-table-column>
-          <el-table-column sortable :show-overflow-tooltip="true" prop="creater"  label="创建人" v-if="false"> </el-table-column>
+          <el-table-column :show-overflow-tooltip="true" prop="id" label="主键id" v-if="false"> </el-table-column>
+          <el-table-column :show-overflow-tooltip="true" prop="title" label="标题" width="100px"> </el-table-column>
+          <el-table-column :show-overflow-tooltip="true" prop="author"  label="作者" width="100px"> </el-table-column>
+          <el-table-column :show-overflow-tooltip="true" prop="content"  label="内容" > </el-table-column>
+          <el-table-column :show-overflow-tooltip="true" prop="createtime"  label="创建时间" v-if="false"> </el-table-column>
           <el-table-column fixed="right" label="操作" width="250px">
             <template slot-scope="scope">
               <el-button type="primary" size="small"  title="修改" icon="el-icon-edit" @click="updateBtn(scope.$index, scope.row)">修改</el-button>
@@ -82,11 +55,9 @@ export default {
       updateRules: {},
       tableData: [ {
         id: 3,
-        title: '总经理',
-        type: '总经理',
-        content: '总经理',
-        createtime: '总经理',
-        creater: '总经理'
+        title: '再别康桥',
+        author: '徐志摩',
+        content: '轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。那河畔的金柳，是夕阳中的新娘；波光里的艳影，在我的心头荡漾。软泥上的青荇，油油的在水底招摇；在康河的柔波里，我甘心做一条水草！那榆荫下的一潭，不是清泉，是天上虹；揉碎在浮藻间，沉淀着彩虹似的梦。寻梦？撑一支长篙，向青草更青处漫溯；满载一船星辉，在星辉斑斓里放歌。但我不能放歌，悄悄是别离的笙箫；夏虫也为我沉默，沉默是今晚的康桥！悄悄的我走了，正如我悄悄的来；我挥一挥衣袖，不带走一片云彩。'
       }]
     }
   },

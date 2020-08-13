@@ -6,6 +6,9 @@
       <el-form-item label="标题" prop="title">
         <el-input v-model="addForm.title" placeholder="请输入标题" >标题</el-input>
       </el-form-item>
+      <el-form-item label="作者" prop="author">
+        <el-input v-model="addForm.author" placeholder="请输入作者" >作者</el-input>
+      </el-form-item>
       <el-form-item label="内容" prop="content">
         <div id="editorMenu" class="editorMenu"></div>
         <div id="editor" class="editor"></div>
@@ -23,10 +26,7 @@ export default {
   data () {
     return {
       show: '1',
-      addForm: {
-        title: '',
-        content: ''
-      },
+      addForm: {},
       addFormRules: {},
       editor: ''
     }

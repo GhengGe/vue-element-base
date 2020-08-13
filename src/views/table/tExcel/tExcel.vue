@@ -8,7 +8,6 @@
           <el-input v-model="ruleForm.code" placeholder="请输入页面代码"></el-input>
         </el-form-item>
         <el-button class="btn-color" @click="submitForm('ruleForm')" icon="el-icon-search">搜索</el-button>
-          <!-- <el-button class="btn-color" icon="el-icon-plus">添加</el-button> -->
       </el-form>
       <!-- 按钮 -->
       <div class="btn">
@@ -38,7 +37,6 @@
                 :current-page.sync="currentPage" height="550" border style="width: 100%" >
         <el-table-column type="index" width="60" label="序号"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="id" label="链接ID" v-if="uncheckList.id" align="center"></el-table-column>
-        <el-table-column :show-overflow-tooltip="true" prop="custom_code" label="客户代码" v-if="uncheckList.custom_code" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="keyword" label="关键字" v-if="uncheckList.keyword" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="ip" label="搜集IP" v-if="uncheckList.ip" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="title" label="页面标题" v-if="uncheckList.title" align="center"></el-table-column>
@@ -108,7 +106,6 @@ export default {
       rules: {},
       tableData: [
         { id: '52',
-          custom_code: '52',
           keyword: '52',
           ip: '52',
           title: '52',
@@ -136,10 +133,6 @@ export default {
           label: 'ID',
           value: 'id',
           checked: false
-        }, {
-          label: 'custom_code',
-          value: '客户代码',
-          checked: true
         }, {
           label: 'keyword',
           value: '关键字',
@@ -281,8 +274,8 @@ export default {
     export2Excel () {
       require.ensure([], () => {
         // const { export_json_to_excel } = require('@/vendor/export2Excel')// 这里必须使用绝对路径，使用@/+存放export2Excel的路径
-        const tHeader = ['ID', '客户代码', '关键字', '搜集IP', '页面标题', '搜集时间', '搜索引擎', '客户端', '协议类型', '检查人', '链接类型', '状态', 'Url']
-        const fieldName = ['id', 'custom_code', 'keyword', 'ip', 'title', 'craw_time', 'searchtype', 'agent', 'urltype', 'examiner', 'isad', 'status', 'url']
+        const tHeader = ['ID', '关键字', '搜集IP', '页面标题', '搜集时间', '搜索引擎', '客户端', '协议类型', '检查人', '链接类型', '状态', 'Url']
+        const fieldName = ['id', 'keyword', 'ip', 'title', 'craw_time', 'searchtype', 'agent', 'urltype', 'examiner', 'isad', 'status', 'url']
         const data = this.formatJson(fieldName, this.tableData)
         exportExcel(tHeader, data, '引擎链接')// 导出的表格名称，根据需要自己命名
       })

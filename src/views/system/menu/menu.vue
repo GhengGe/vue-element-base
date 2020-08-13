@@ -2,8 +2,8 @@
   <div class="user">
     <!-- 表单 -->
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm" label-position="left">
-      <el-form-item label="角色名称" prop="name">
-        <el-input v-model="ruleForm.name" placeholder="请输入用户名称"></el-input>
+      <el-form-item label="菜单名称" prop="name">
+        <el-input v-model="ruleForm.name" placeholder="请输入菜单名称"></el-input>
       </el-form-item>
       <el-button class="btn-color" @click="submitForm('ruleForm')" icon="el-icon-search">搜索</el-button>
       <el-button class="btn-color" icon="el-icon-plus" @click="addBtn()">添加</el-button>
@@ -50,11 +50,11 @@
     <el-table :data="tableData" height="450" border style="width: 100%" row-key="id" :tree-props="{children: 'children', hasChildren: 'hasChildren'}">
         <el-table-column type="index" width="60"></el-table-column>
         <el-table-column sortable :show-overflow-tooltip="true" prop="id" label="主键id" > </el-table-column>
-        <el-table-column sortable :show-overflow-tooltip="true" prop="simplename" label="部门简称"> </el-table-column>
-        <el-table-column sortable :show-overflow-tooltip="true" prop="fullname" label="部门全称" > </el-table-column>
+        <el-table-column sortable :show-overflow-tooltip="true" prop="simplename" label="中文名称"> </el-table-column>
+        <el-table-column sortable :show-overflow-tooltip="true" prop="fullname" label="代码" > </el-table-column>
+        <el-table-column sortable :show-overflow-tooltip="true" prop="pid"  label="父代码"> </el-table-column>
+        <el-table-column sortable :show-overflow-tooltip="true" prop="pids"  label="父级ids"> </el-table-column>
         <el-table-column sortable :show-overflow-tooltip="true" prop="tips"  label="备注" > </el-table-column>
-        <el-table-column sortable :show-overflow-tooltip="true" prop="pid"  label="父部门id" v-if="false"> </el-table-column>
-        <el-table-column sortable :show-overflow-tooltip="true" prop="pids"  label="父级ids" v-if="false"> </el-table-column>
         <el-table-column fixed="right" label="操作" width="250px">
           <template slot-scope="scope">
             <el-button type="primary" size="small"  title="修改" icon="el-icon-edit" @click="updateBtn(scope.$index, scope.row)">修改</el-button>

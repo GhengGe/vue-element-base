@@ -27,7 +27,7 @@ export default {
     return {
       // url: '../../assets/img/tou.jpg',
       url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-      name: '胡图图',
+      name: '路飞',
       grade: '超级管理员'
     }
   }

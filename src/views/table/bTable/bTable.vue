@@ -1,14 +1,10 @@
 <template>
   <div class="btable">
-    <!-- <transition name="fade"> -->
     <div class="i_cont" v-if="show == '1'">
       <!-- 表单 -->
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" class="demo-ruleForm" label-position="left">
         <el-form-item label="页面代码" prop="code">
           <el-input v-model="ruleForm.code" placeholder="请输入页面代码"></el-input>
-        </el-form-item>
-        <el-form-item label="停留时间" prop="res_time">
-          <el-input v-model="ruleForm.res_time" placeholder="请输入停留时间"></el-input>
         </el-form-item>
         <el-form-item label="日志类型" prop="journal_type">
           <el-select v-model="ruleForm.journal_type" placeholder="请选择日志类型">
@@ -68,8 +64,6 @@
             <span v-else class="ta_btn" style="background-color:#ffc107;">点击</span>
           </template>
         </el-table-column>
-        <el-table-column :show-overflow-tooltip="true" prop="action" label="动作描述" v-if="uncheckList.action" align="center"></el-table-column>
-        <el-table-column :show-overflow-tooltip="true" prop="remain" label="停留(秒)" v-if="uncheckList.remain" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="useragent" label="终端类型" v-if="uncheckList.useragent" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="create_time" label="上报时间" v-if="uncheckList.create_time" align="center"></el-table-column>
         <el-table-column fixed="right" label="操作" width="100px">
@@ -90,13 +84,8 @@
         :total="total">
       </el-pagination>
     </div>
-    <!-- </transition> -->
-    <!-- <transition name="fade"> -->
     <ms-add v-if="show == '2'" @child="showTable"></ms-add>
-    <!-- </transition> -->
-    <!-- <transition name="fade"> -->
     <ms-update v-if="show == '3'" @child="showTable"></ms-update>
-    <!-- </transition> -->
   </div>
 </template>
 <script>

@@ -40,7 +40,6 @@
         <el-table-column :show-overflow-tooltip="true" prop="id" label="ID" v-if="uncheckList.id" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="aid" label="访问ID" v-if="uncheckList.aid" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="accip" label="访问IP" v-if="uncheckList.accip" align="center"></el-table-column>
-        <el-table-column :show-overflow-tooltip="true" prop="ucode" label="页面代码" v-if="uncheckList.ucode" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="name" label="提交姓名" v-if="uncheckList.name" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="phone" label="提交电话" v-if="uncheckList.phone" align="center"></el-table-column>
         <el-table-column :show-overflow-tooltip="true" prop="qq" label="提交QQ" v-if="uncheckList.qq" align="center"></el-table-column>
@@ -73,7 +72,6 @@
 </template>
 <script>
 import msAdd from './tJsonAdd'
-import { export_json_to_excel as exportExcel } from '../../../vendor/export2Excel'
 export default {
   data () {
     return {
@@ -86,7 +84,6 @@ export default {
         { id: '52',
           aid: '52',
           accip: '52',
-          ucode: '52',
           name: '52',
           phone: '52',
           qq: '52',
@@ -109,10 +106,6 @@ export default {
         }, {
           label: 'accip',
           value: '访问IP',
-          checked: true
-        }, {
-          label: 'ucode',
-          value: '页面代码',
           checked: true
         }, {
           label: 'name',
@@ -218,33 +211,55 @@ export default {
       }
       // 强制刷新
       this.$forceUpdate()
-    },
-    // 点击下载表格
-    downloadExcel () {
-      this.$confirm('确定下载列表文件?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        this.export2Excel()
-      }).catch(() => {
-        this.$message.error('导出操作出现了异常')
-      })
-    },
-    // 格式转换
-    formatJson (filterVal, jsonData) {
-      return jsonData.map(v => filterVal.map(j => v[j]))
-    },
-    // 数据写入excel   tHeader导出的表头名信息    fieldName表头字段名     tableData表格数据  excelName导出Excel名字
-    export2Excel () {
-      require.ensure([], () => {
-        // const { export_json_to_excel } = require('@/vendor/export2Excel')// 这里必须使用绝对路径，使用@/+存放export2Excel的路径
-        const tHeader = ['ID', '访问ID', '访问IP', '页面代码', '提交姓名', '提交电话', '提交QQ', '提交建议', '终端类型', '状态', '提交时间']
-        const fieldName = ['id', 'aid', 'accip', 'ucode', 'name', 'phone', 'qq', 'content', 'useragent', 'status', 'create_time']
-        const data = this.formatJson(fieldName, this.tableData)
-        exportExcel(tHeader, data, '意向表单')// 导出的表格名称，根据需要自己命名
-      })
     }
+    // 将表格导为JSOM格式
+    // changeJSON(){
+    //   var dataJSON = []//新建对象，用来存储所有数据
+    //   // 定义列名
+    //   var id, aid, gameid, accip, name, phone, qq, content, useragent, status
+    //   $(".tJson table tr").each(function (trindex, tritem) {//遍历每一行
+    //     if(trindex > 0) {   // 过滤掉表头
+    //       var tableData={};  // 该行的数据
+    //       $(tritem).find("td").each(function (tdIndex, tditem) {
+    //         // 遍历每一行的td 并存入
+    //         //当天td的值，再根据tdIndex设置属性
+    //         var tdValue = $(tditem).text()
+    //         if (tdIndex == 1) {//第0列是code
+    //             tableData.id = tdValue
+    //         }
+    //         if (tdIndex == 2) {
+    //             tableData.aid = tdValue
+    //         }
+    //         if (tdIndex == 3) {
+    //             tableData.gameid = tdValue
+    //         }
+    //         if (tdIndex == 4) {
+    //             tableData.accip = tdValue
+    //         }
+    //         if (tdIndex == 5) {
+    //             tableData.name = tdValue
+    //         }
+    //         if (tdIndex == 6) {
+    //             tableData.phone = tdValue
+    //         }
+    //         if (tdIndex == 7) {
+    //             tableData.qq = tdValue
+    //         }
+    //         if (tdIndex == 8) {
+    //             tableData.content = tdValue
+    //         }
+    //         if (tdIndex == 9) {
+    //             tableData.useragent = tdValue
+    //         }
+    //         if (tdIndex == 10 ){
+    //             tableData.status = tdValue
+    //         }
+    //       })
+    //       dataJSON.push(tableData)//将每一行的数据存入
+    //     }
+    //   })
+    //   this.dataJSON = dataJSON
+    // }
   }
 }
 </script>

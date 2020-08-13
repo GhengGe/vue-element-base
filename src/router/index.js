@@ -91,21 +91,6 @@ export default new Router({
             }
           ]
         },
-        { path: '/model',
-          name: 'model',
-          component: () =>
-          import('@/views/model/model'),
-          children: [
-            { path: '/mSubmit',
-              name: 'mSubmit',
-              component: () =>
-              import('@/views/model/mSubmit/mSubmit'),
-              meta: {
-                title: '模型提交'
-              }
-            }
-          ]
-        },
         { path: '/user',
           name: 'user',
           component: () =>
@@ -119,7 +104,7 @@ export default new Router({
           component: () =>
               import('@/views/tab/tab'),
           meta: {
-            title: '用户管理'
+            title: 'tab切换'
           }
         },
         { path: '/system',
@@ -135,44 +120,12 @@ export default new Router({
                 title: '角色管理'
               }
             },
-            { path: '/department',
-              name: 'department',
-              component: () =>
-              import('@/views/system/department/department'),
-              meta: {
-                title: '部门管理'
-              }
-            },
-            { path: '/dictionaries',
-              name: 'dictionaries',
-              component: () =>
-              import('@/views/system/dictionaries/dictionaries'),
-              meta: {
-                title: '字典管理'
-              }
-            },
             { path: '/menu',
               name: 'menu',
               component: () =>
               import('@/views/system/menu/menu'),
               meta: {
                 title: '菜单管理'
-              }
-            },
-            { path: '/signIn',
-              name: 'signIn',
-              component: () =>
-              import('@/views/system/signIn/signIn'),
-              meta: {
-                title: '登录日志'
-              }
-            },
-            { path: '/business',
-              name: 'business',
-              component: () =>
-              import('@/views/system/business/business'),
-              meta: {
-                title: '业务日志'
               }
             },
             { path: '/notice',
@@ -184,22 +137,6 @@ export default new Router({
               }
             }
           ]
-        },
-        { path: '/joggle',
-          name: 'joggle',
-          component: () =>
-              import('@/views/joggle/joggle'),
-          meta: {
-            title: '接口文档'
-          }
-        },
-        { path: '/code',
-          name: 'code',
-          component: () =>
-              import('@/views/code/code'),
-          meta: {
-            title: '代码生成'
-          }
         }
       ]
     }

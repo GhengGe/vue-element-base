@@ -35,29 +35,6 @@
             <div class="btn">
               <div class="fl clearfix">
                 <el-button class="btn-opera" icon="el-icon-plus" @click="addDialogFormVisible = true">添加</el-button>
-                <!-- <el-button class="btn-opera" icon="el-icon-edit">修改</el-button>
-                <el-button class="btn-opera" icon="el-icon-delete">删除</el-button>
-                <el-button class="btn-opera" icon="el-icon-refresh">重置密码</el-button>
-                <el-button class="btn-opera" icon="el-icon-warning-outline">冻结</el-button>
-                <el-button class="btn-opera" icon="el-icon-circle-check">解除冻结</el-button>
-                <el-button class="btn-opera" icon="el-icon-s-custom">角色分配</el-button> -->
-              </div>
-              <div class="fr clearfix">
-                <el-button-group>
-                  <el-button plain icon="el-icon-refresh-right"></el-button>
-                  <!-- //筛选按钮 -->
-                  <el-popover
-                        placement="bottom"
-                        title="列筛选"
-                        width="160"
-                        trigger="click">
-                      <el-checkbox-group v-model="checkList" @change="filter">
-                      <el-checkbox v-for ="(item,index) in tableList" :label="item.label" :key="index">{{item.value}}</el-checkbox>
-                      </el-checkbox-group>
-                      <el-button size="small" plain slot="reference" icon="el-icon-s-operation"><i class="el-icon-caret-bottom"></i></el-button>
-                  </el-popover>
-                  <!-- <el-button plain icon="el-icon-s-operation"><i class="el-icon-caret-bottom"></i></el-button> -->
-                </el-button-group>
               </div>
             </div>
             <!-- 表格 -->
@@ -65,16 +42,16 @@
               :current-page.sync="currentPage"
               height="550" border style="width: 100%" >
                 <el-table-column type="index" width="60"></el-table-column>
-              <el-table-column prop="roleid" label="roleid" header-align="center" v-if="uncheckList.account" align="center" sortable v-show="false"></el-table-column>
-              <el-table-column prop="account" label="账号" header-align="center" v-if="uncheckList.account" align="center" sortable></el-table-column>
-              <el-table-column prop="name" label="姓名" header-align="center" v-if="uncheckList.name" align="center" sortable></el-table-column>
-              <el-table-column prop="phone" label="电话" header-align="center"  v-if="uncheckList.phone" align="center" sortable></el-table-column>
-              <el-table-column prop="createTime" label="创建时间" header-align="center" v-if="uncheckList.createTime" align="center" sortable></el-table-column>
-              <el-table-column prop="status" label="状态" header-align="center" v-if="uncheckList.status" align="center" sortable></el-table-column>
+              <!-- <el-table-column prop="roleid" label="roleid" header-align="center" align="center" v-show="false"></el-table-column> -->
+              <el-table-column prop="account" label="账号" header-align="center" align="center"></el-table-column>
+              <el-table-column prop="name" label="姓名" header-align="center" align="center"></el-table-column>
+              <el-table-column prop="phone" label="电话" header-align="center" align="center"></el-table-column>
+              <el-table-column prop="createTime" label="创建时间" header-align="center" align="center"></el-table-column>
+              <el-table-column prop="status" label="状态" header-align="center" align="center"></el-table-column>
               <el-table-column fixed="right" label="操作" width="110px">
                 <template slot-scope="scope">
                   <el-button v-if="frozen" type="success"   size="small"  title="冻结" icon="el-icon-circle-check" @click="frozenUser()">冻结</el-button>
-                  <el-button v-else type="danger"  size="small"  title="解除冻结" icon="el-icon-s-custom" @click="unfrozenUser()">解除冻结</el-button>
+                  <el-button v-else type="danger"  size="small"  title="解除冻结" icon="el-icon-s-custom" @click="frozenUser()">解除冻结</el-button>
                 </template>
               </el-table-column>
               <el-table-column fixed="right" label="操作" width="250px">
@@ -136,12 +113,6 @@
                     </el-form-item>
                   </el-col>
                 </el-row>
-                <!-- <el-form-item label="部门" prop="productId">
-                    <el-input v-model="addForm.productId">部门</el-input>
-                </el-form-item>
-                <el-form-item label="推广位" prop="gameid" hidden>
-                    <el-input v-model="addForm.gameid" >推广位</el-input>
-                </el-form-item> -->
               </el-form>
                 <div slot="footer" class="dialog-footer">
                     <el-button @click="addDialogFormVisible = false">取 消</el-button>
@@ -187,12 +158,6 @@
                     </el-form-item>
                   </el-col>
                 </el-row>
-                <!-- <el-form-item label="部门" prop="productId">
-                    <el-input v-model="updateForm.productId">部门</el-input>
-                </el-form-item>
-                <el-form-item label="推广位" prop="gameid" hidden>
-                    <el-input v-model="updateForm.gameid" >推广位</el-input>
-                </el-form-item> -->
               </el-form>
                 <div slot="footer" class="dialog-footer">
                     <el-button @click="updateDialogFormVisible = false">取 消</el-button>
@@ -221,6 +186,16 @@ export default {
             id: 10,
             label: '运营部'
           }]
+        }, {
+          id: 4,
+          label: '分公司',
+          children: [{
+            id: 9,
+            label: '开发部'
+          }, {
+            id: 10,
+            label: '运营部'
+          }]
         }]
       }],
       defaultProps: {
@@ -233,31 +208,8 @@ export default {
       },
       rules: {},
       tableData: [
-        {account: '1', name: 'cg', phone: 'cg', createTime: 'cg', status: 'cg'}
+        {account: '3466700020', name: 'cg', phone: '15235454454', createTime: '2020-08-13 12:00:00', status: '激活'}
       ],
-
-      // 筛选按钮的数据列表，与table表头的数据一致
-      tableList: [
-        {
-          label: 'order',
-          value: '账号'
-        }, {
-          label: 'name',
-          value: '姓名'
-        }, {
-          label: 'phone',
-          value: '电话'
-        }, {
-          label: 'createTime',
-          value: '创建时间'
-        }, {
-          label: 'zhuantai',
-          value: '状态'
-        }],
-      // 筛选列选中的数据列表
-      checkList: [],
-      // 控制筛选列显示隐藏
-      uncheckList: {},
       currentPage: 1,
       pagesize: 10,
       total: 1,
@@ -291,14 +243,14 @@ export default {
   methods: {
     // 用户列表渲染
     getTableData () {
-      this.$http.post('/mgr/list', { }).then((res) => {
-        this.tableData = res
-      }).catch(err => {
-        if (err) {
-          console.log(err)
-        }
-        alert('请求失败')
-      })
+      // this.$http.post('/mgr/list', { }).then((res) => {
+      //   this.tableData = res
+      // }).catch(err => {
+      //   if (err) {
+      //     console.log(err)
+      //   }
+      //   alert('请求失败')
+      // })
     },
     handleSizeChange (val) {
       this.pagesize = val
@@ -376,9 +328,9 @@ export default {
     // 角色分配
     roleAssign () {},
     // 冻结
-    frozenUser () {},
-    // 解除冻结
-    unfrozenUser () {}
+    frozenUser () {
+      this.frozen = !this.frozen
+    }
   }
 }
 </script>
