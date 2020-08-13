@@ -1,0 +1,16 @@
+table.tab {
+  width: 95%;
+  border:solid #eee;
+  border-width:1px 0px 0px 1px;
+  font-size: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.tab td {
+  border:solid #eee;
+  border-width:0px 1px 1px 0px;
+}
+.tab tr td:nth-child(1) {
+  background-color: #ccc;
+}

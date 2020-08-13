@@ -1,0 +1,64 @@
+.el-input {
+  width: auto;
+}
+.el-form-item {
+  display: inline-block;
+}
+.el-input {
+  width: auto;
+}
+.el-form-item {
+  display: inline-block;
+}
+.el-button--small.is-round {
+  padding: 9px;
+}
+.el-button--small {
+  padding: 5px
+}
+>>> .el-input__inner {
+  height: 35px!important;
+  line-height: 35px!important;
+}
+.btn-color {
+  padding: 9px 12px;
+  margin-bottom: 15px;
+}
+.little .el-input {
+  width: 160px;
+}
+.little.el-form-item {
+  margin-bottom: 10px;
+}
+.little >>>.el-form-item__label{
+  padding: 0;
+  width: 65px!important;
+}
+.little >>>.el-form-item__content {
+  margin-left: 65px!important;
+}
+.fade-enter-active {
+  transition: margin-left .5s;
+}
+.fade-enter {
+  margin-left: -1000px;
+}
+.fade-leave-active {
+  transition: display .5s;
+}
+.fade-leave-to {
+  display: none;
+}
+.el-pagination {
+  height: 35px;
+  margin: 15px;
+}
+/deep/.el-table td, .el-table th {
+  padding: 5px 0!important;
+}
+/deep/.el-table th.is-sortable {
+  padding: 5px 0!important;
+}
+.el-tree {
+  background: #fff0;
+}
